@@ -14,11 +14,6 @@ export default function index() {
         accessibilityLabel="Learn more about this purple button"
       />
 
-      <Image
-        style={styles.tinyLogo}
-        source={require('../assets/images/icon.png')}
-      />
-
       <Link href="/profile">View details</Link>
     </View>
   )
@@ -27,10 +22,7 @@ export default function index() {
 const styles = StyleSheet.create({
   fontStyle: {
     fontSize: 40,
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+    height: 178
   },
   tinyLogo: {
     width: 150,
