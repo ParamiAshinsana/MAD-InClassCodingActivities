@@ -7,6 +7,7 @@ export default function TabLayout() {
       <Tabs.Screen name="profile" />
       <Tabs.Screen name="camera" />
       <Tabs.Screen name="test" />
+      <Tabs.Screen name="useState" />
     </Tabs>
   );
 }
