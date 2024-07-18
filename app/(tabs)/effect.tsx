@@ -9,8 +9,10 @@ export default function effect() {
 
     useEffect(() => {
         console.log('Number : ',number);
+        return ()=>{console.log("Test Log");
+        }
         
-    }, [number]);
+    }, [number,]);// depenedency array
 
 
   return (
