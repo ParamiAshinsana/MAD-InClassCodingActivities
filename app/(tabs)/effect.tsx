@@ -15,7 +15,7 @@ export default function effect() {
 
   return (
     <View>
-      <Text>effect</Text>
+      <Text>{number}</Text>
 
 
       <Button title='+' onPress={()=> {setNumber(number+1)}}/>
