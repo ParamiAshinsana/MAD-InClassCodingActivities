@@ -2,8 +2,16 @@ import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import {Link, router } from 'expo-router';
 import { auth } from '../../FirebaseConfig';
+import { signInWithEmailAndPassword,createUserWithEmailAndPassword } from 'firebase/auth';
+import  { useState } from 'react'
 
 export default function Signup() {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>

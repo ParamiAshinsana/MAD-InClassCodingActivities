@@ -1,8 +1,38 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Button } from 'react-native';
 import {Link, router } from 'expo-router';
+import { auth } from '../../FirebaseConfig';
+import { signInWithEmailAndPassword,createUserWithEmailAndPassword } from 'firebase/auth';
+import  { useState } from 'react'
 
 export default function Signup() {
+
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const signIn=async()=>{
+    try{
+      const user=await signInWithEmailAndPassword(auth,email,password)
+      if(user) alert('SignIn Success')
+    }catch(error:any){
+      console.log(error);
+      alert('Sign In Failed'+error.message)
+      
+    }
+  }
+
+  const signUp=async()=>{
+    try{
+      const user=await createUserWithEmailAndPassword(auth,email,password)
+      if(user) alert('SignUp Success')
+    }catch(error:any){
+      console.log(error);
+      alert('SignUp Failed'+error.message)
+      
+    }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -16,21 +46,21 @@ export default function Signup() {
 
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Email</Text>
-        <TextInput style={styles.input} placeholder="Email*" />
+        <TextInput style={styles.input} placeholder="Email*" onChangeText={setEmail} />
       </View>
       
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Password</Text>
-        <TextInput style={styles.input} placeholder="Password*" />
+        <TextInput style={styles.input} placeholder="Password*"  onChangeText={setPassword}/>
       </View>
 
       
       <TouchableOpacity style={styles.button}  onPress={() => router.push('/profile')}>
-        <Text style={styles.buttonText}>Sign In</Text>
+      <Button onPress={signIn} title='Sign In'/>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.button}  onPress={() => router.push('/signup')}>
-        <Text style={styles.buttonText}>Sign Up</Text>
+        <Button onPress={signUp} title='Sign Up'/>
       </TouchableOpacity>
     </View>
   );
