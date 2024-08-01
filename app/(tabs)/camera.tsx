@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Button, Image, View, StyleSheet } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import {User,onAuthStateChanged} from 'firebase/auth';
+import {ref,uploadBytes} from 'firebase/storage';
+import { storage } from '@/FirebaseConfig'
 
 export default function ImagePickerExample() {
   const [image, setImage] = useState(null);
@@ -20,6 +23,21 @@ export default function ImagePickerExample() {
       setImage(result.assets[0].uri);
     }
   };
+
+const uploadImage=async()=>{
+  try{
+    const response = await fetch(image);
+    const blob = await response.blob();
+
+    const storageRef = ref(storage, `images/${Date.now()}`)
+    await uploadBytes(storageRef, blob);
+
+    console.log('image Uploaded successefull')
+}catch(error){
+    console.log('Error uploading image : '+error.message);
+
+}
+
 
   return (
     <View style={styles.container}>
