@@ -42,8 +42,7 @@ export default function Signup() {
         <Text style={styles.topic}>Signin Here</Text>
       </View>
 
-      
-
+    
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Email</Text>
         <TextInput style={styles.input} placeholder="Email*" onChangeText={setEmail} />
