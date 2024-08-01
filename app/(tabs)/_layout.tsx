@@ -9,6 +9,8 @@ export default function TabLayout() {
       <Tabs.Screen name="test" />
       <Tabs.Screen name="state" />
       <Tabs.Screen name="effect" />
+      <Tabs.Screen name="signin" />
+      <Tabs.Screen name="signup" />
     </Tabs>
   );
 }
